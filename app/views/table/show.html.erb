@@ -1,0 +1,294 @@
+<style>
+	@font-face {
+		font-family: octicons-anchor;
+		src: url(https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.woff) format('woff');
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+	body {
+		display: grid;
+		grid-template-rows: 100px auto;
+		grid-template-columns: 20% auto 20%;
+		margin: 0 0;
+
+	}
+	div.container:nth-child(1) {
+		grid-row: 1;	
+		grid-column: 1/-1;
+		background: #333333;
+		color: white;
+	}
+	.row > h1:nth-child(1) {
+		text-align: center
+	}
+	div.container:nth-child(3) {
+		padding-top: 15px;
+		justify-self: center;
+		grid-row: 2;
+		grid-column: 2;
+		min-width: 750px;
+	}
+	.elemnt > ul:nth-child(1) {
+		height: 100%;
+		width: auto;
+		margin: 0 0;
+		padding: 0 0;
+	}
+	
+	div.container:nth-child(3) {
+		display: grid;
+		grid-template-columns: 1fr 2fr;
+		grid-gap: 10px;
+	}
+	.elemnt > ul:nth-child(1) > li:nth-child(1) {
+		list-style: none;
+		display: grid;
+		
+		grid-template-columns: 1fr 1fr;
+		background:#8ced8c;
+		border: 5px solid;
+		border-color: rgb(31, 199, 31);
+		border-radius: 3px;
+		height: 260px;
+		width: 260px;
+		padding: 5px;
+	}
+	.elemnt > ul:nth-child(1) > li:nth-child(1) > div:nth-child(1) {
+		grid-columns: 1;
+		text-decoration: none;
+		list-style: none;	
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-start;
+		font-size: large;
+		color: black;
+	}
+	.elemnt > ul:nth-child(1) > li:nth-child(1) > div:nth-child(1) > p:nth-child(2) {
+		font-size: xx-large;
+		font-weight: bold;
+	}
+	.elemnt > ul:nth-child(1) > li:nth-child(1) > ul:nth-child(2) {
+		grid-columns: 2;
+		display:flex;
+		flex-direction: column;
+		align-items: flex-end;
+	}
+	.elemnt > ul:nth-child(1) > li:nth-child(1) > ul:nth-child(2) > li {
+		list-style: none;	
+	}
+	.elemnt > ul:nth-child(1) > li:nth-child(1) > div:nth-child(1) > p {
+		margin:0 0;
+	}
+	.table {
+		border-radius: 3px;
+		box-shadow:inset 0 0 2rem rgba(0,0,0,.30);
+	}
+	.table > ul:nth-child(1) {
+		margin: 0 0;
+		padding: 0 0;
+	}
+	.table > ul:nth-child(1) > li:nth-child(1) {
+		list-style: none;
+	}
+	.table > ul:nth-child(1) > li:nth-child(1) > div {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 10px;
+	}
+	.table > ul:nth-child(1) > li:nth-child(1) > div > h4 {
+		margin-right: 5px;
+	}
+	.table > ul:nth-child(1) > li:nth-child(1) > div:nth-child(15) > ul {
+		width: 100%;
+		list-style: none;
+		padding-left: 0;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+</style>
+
+<div class="container">
+	<div class="elemnt">
+		<ul>
+			<% @elements["order"].each do |element| %>
+				<% if @elements[element]["name"] == "Hydrogen" %>
+					<li>  
+						<div>
+							<p>	
+								<%= @elements[element]["number"] %>
+							</p>
+							<p>
+								<%= @elements[element]["symbol"] %>
+							</p>
+							<p>
+								<%= @elements[element]["name"] %>
+							</p>
+							<p>
+								<%= @elements[element]["atomic_mass"] %>
+							</p>
+						</div>	
+						<ul>
+							<% @elements[element]["shells"].each do |e| %>
+								
+								<li>
+									<%= e %>
+								</li>
+
+							<% end %>
+						</ul>
+					</li>
+				<% end %>
+			<% end %>
+
+		</ul> 
+	</div>
+	<div class="table">
+		<ul>
+			<% @elements["order"].each do |element| %>
+				<% if @elements[element]["name"] == "Hydrogen" %>
+					<li>  
+						<div>
+							<h4>
+								Ebulição:
+							</h4>
+							<h6>
+								<%= @elements[element]["boil"] %> °C
+							</h6>
+						</div>
+						<div>
+							<h4>
+								Categoria:
+							</h4>
+							<h6>
+								<%= @elements[element]["category"] %> 
+							</h6>
+						</div>
+						<div>
+							<h4>
+								Densidade: 
+							</h4>
+							<h6>
+								<%= @elements[element]["density"] %> kg/m3
+							</h6>
+						</div>
+						<div>
+							<h4>
+								Descobridor: 
+							</h4>
+							<h6>
+								<%= @elements[element]["discovered_by"] %>
+							</h6>
+						</div>
+						<div>
+							<h4>
+								Fusão: 
+							</h4>
+							<h6>
+								<%= @elements[element]["melt"] %> °C
+							</h6>
+						</div>
+						<div>
+							<h4>
+								Cadivacidade térmica molar: 
+							</h4>
+							<h6>
+								<%= @elements[element]["molar_heat"] %> cal/°C
+							</h6>
+						</div>
+						<div>
+							<h4>
+								Nomeado por: 
+							</h4>
+							<h6>
+								<%= @elements[element]["named_by"] %>
+							</h6>
+						</div>
+						<div>
+							<h4>
+								Periodo: 
+							</h4>
+							<h6>	
+								<%= @elements[element]["period"] %>
+							</h6>
+						</div>
+						<div>
+							<h4>
+								Fase: 
+							</h4>
+							<h6>
+								<%= @elements[element]["phase"] %>
+							</h6>
+						</div>
+						<div>
+							<h4>
+								Fonte: 
+							</h4>
+							<h6>
+								<%= @elements[element]["source"] %>
+							</h6>
+						</div>
+
+						<div>
+							<h4>
+								Configuração eletrônica:
+							</h4>
+							<h6>
+								<%= @elements[element]["electron_configuration"] %>
+							</h6>
+						</div>
+						<div>
+							<h4>
+								Semântica de configuração de elétrons:
+							</h4>
+							<h6>
+								<%= @elements[element]["electron_configuration_semantic"] %>
+							</h6>
+						</div>
+						<div>
+							<h4>
+								Afinidade eletrônica: 
+							</h4>
+							<h6>
+								<%= @elements[element]["electron_affinity"] %> KJ/mol
+							</h6>
+						</div>
+						<div>
+							<h4>
+							Eletronegatividade: 
+							</h4>
+							<h6>
+								<%= @elements[element]["electronegativity_pauling"] %>
+							</h6>
+						</div>
+						
+						<div>
+							<ul>
+								<h4>
+									Potencial de ionização:
+								</h4>
+								<h6>
+									<% @elements[element]["ionization_energies"].each do |e| %>
+								
+										<li>
+											<%= e %> kJ/mol
+										</li>
+
+									<% end %>
+								</h6>
+							</ul>
+						</div>
+					</li>
+				<% end %>
+			<% end %>
+
+		</ul> 
+	</div>
+	<div>
+		<%= link_to "Voltar", table_index_path %>
+	</div>
+</div>

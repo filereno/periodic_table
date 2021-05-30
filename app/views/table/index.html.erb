@@ -1,16 +1,629 @@
+<style>
+	@font-face {
+		font-family: octicons-anchor;
+		src: url(https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.woff) format('woff');
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+	body {
+		display: grid;
+		grid-template-rows: 100px auto;
+		grid-template-columns: 10% auto 10%;
+		margin: 0 0;
+	}
+	div.container:nth-child(1) {
+		grid-row: 1;	
+		grid-column: 1/-1;
+		width: 100%;
+		background: #333333;
+		color: white;
+	}
+	.row > h1:nth-child(1) {
+		text-align: center
+	}
+	div.container:nth-child(3) {
+		padding-top: 15px;
+		grid-row: 2;
+		grid-column: 2;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+	div.container:nth-child(3) > {
+		height: auto;
+		width: 700px;
+	}
+	div.container:nth-child(3) > ul {
+		margin: 0 0;
+		padding: 0 0;
+		grid-row: 2;
+		display: grid;
+		grid-gap: 2px;
+		grid-template-columns: repeat(18,1fr);
+		grid-template-rows: repeat(10,1fr);
+		grid-template-areas:
+
+			"H . . . . . . . . . . . . . . . . He"
+			"Li Be . . . . . . . . . . B C N O F Ne"
+			"Na Mg . . . . . . . . . . AI Si P S CI Ar"
+			"K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr"
+			"Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe"
+			"Cs Ba . Hf Ta W Re Os Ir Pt Au Hg TI Pb Bi Po At Rn"
+			"Fr Ra . Rf Db Sg Bh Hs Mt Ds Rg Cn Nh FI Mc Lv Ts Og"
+			". . . . . . . . . . . . . . . . . ."
+			". . . La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu"
+			". . . Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr"
+		;
+		
+	}	
+	div.container:nth-child(3) > ul > li {
+		list-style: none;
+		
+	}
+	div.container:nth-child(3) > ul > li > a {
+		text-decoration: none;
+		border: 1px solid;
+		list-style: none;	
+		height: 60px;
+		width: 60px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: flex-start;
+		font-size: xx-small;
+		color: black;
+	}
+	div.container:nth-child(3) > ul > li > a > p {
+		margin:0 0;
+		padding-left: 2px;
+	}
+	div.container:nth-child(3) > ul > li > a > p:nth-child(2) {
+		font-size: small;
+		font-weight: bold;
+	}
+	
+
+	/* Nomes dos elementos da tabela para grid area  */
+	div.container:nth-child(3) > ul > li:nth-child(1) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(2) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(10) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(18) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(36) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(54) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(86) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(7) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(8) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(9) > a > p:nth-child(2), 
+	div.container:nth-child(3) > ul > li:nth-child(17) > a > p:nth-child(2) {
+		color:#990000;
+	}
+
+	div.container:nth-child(3) > ul > li:nth-child(104) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(105) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(106) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(107) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(108) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(109) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(110) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(111) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(112) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(113) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(114) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(115) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(116) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(117) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(118) > a > p:nth-child(2),
+	div.container:nth-child(3) > ul > li:nth-child(87) > a > p:nth-child(2) {
+		color:#667766;
+		
+	}
+	div.container:nth-child(3) > ul > li:nth-child(1) {
+		grid-area: H;
+		background:#8ced8c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(2) {
+		grid-area: He;
+		background:#e5bde5;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(3) {
+		grid-area: Li;
+		background:#eace5d;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(4) {
+		grid-area: Be;
+		background:#f1f165;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(5) {
+		grid-area: B;
+		background:#9ee5d4;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(6) {
+		grid-area: C;
+		background:#8ced8c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(7) {
+		grid-area: N;
+		background:#8ced8c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(8) {
+		grid-area: O;
+		background:#8ced8c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(9) {
+		grid-area: F;
+		background:#8ced8c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(10) {
+		grid-area: Ne;
+		background:#e5bde5;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(11) {
+		grid-area: Na;
+		background:#eace5d;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(12) {
+		grid-area: Mg;
+		background:#f1f165;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(13) {
+		grid-area: AI;
+		background:#acdfec;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(14) {
+		grid-area: Si;
+		background:#9ee5d4;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(15) {
+		grid-area: P;
+		background:#8ced8c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(16) {
+		grid-area: S;
+		background:#8ced8c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(17) {
+		grid-area: CI;
+		background:#8ced8c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(18) {
+		grid-area: Ar;
+		background:#e5bde5;
+	}
+
+	div.container:nth-child(3) > ul > li:nth-child(19) {
+		grid-area: K;
+		background:#eace5d;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(20) {
+		grid-area: Ca;
+		background:#f1f165;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(21) {
+		grid-area: Sc;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(22) {
+		grid-area: Ti;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(23) {
+		grid-area: V;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(24) {
+		grid-area: Cr;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(25) {
+		grid-area: Mn;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(26) {
+		grid-area: Fe;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(27) {
+		grid-area: Co;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(28) {
+		grid-area: Ni;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(29) {
+		grid-area: Cu;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(30) {
+		grid-area: Zn;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(31) {
+		grid-area: Ga;
+		background:#acdfec;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(32) {
+		grid-area: Ge;
+		background:#9ee5d4;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(33) {
+		grid-area: As;
+		background:#9ee5d4;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(34) {
+		grid-area: Se;
+		background:#8ced8c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(35) {
+		grid-area: Br;
+		background:#8ced8c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(36) {
+		grid-area: Kr;
+		background:#e5bde5;
+	}
+
+	div.container:nth-child(3) > ul > li:nth-child(37) {
+		grid-area: Rb;
+		background:#eace5d;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(38) {
+		grid-area: Sr;
+		background:#f1f165;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(39) {
+		grid-area: Y;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(40) {
+		grid-area: Zr;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(41) {
+		grid-area: Nb;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(42) {
+		grid-area: Mo;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(43) {
+		grid-area: Tc;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(44) {
+		grid-area: Ru;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(45) {
+		grid-area: Rh;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(46) {
+		grid-area: Pd;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(47) {
+		grid-area: Ag;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(48) {
+		grid-area: Cd;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(49) {
+		grid-area: In;
+		background:#acdfec;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(50) {
+		grid-area: Sn;
+		background:#acdfec;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(51) {
+		grid-area: Sb;
+		background:#9ee5d4;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(52) {
+		grid-area: Te;
+		background:#9ee5d4;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(53) {
+		grid-area: I;
+		background:#8ced8c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(54) {
+		grid-area: Xe;
+		background:#e5bde5;
+	}
+
+	div.container:nth-child(3) > ul > li:nth-child(55) {
+		grid-area: Cs;
+		background:#eace5d;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(56) {
+		grid-area: Ba;
+		background:#f1f165;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(57) {
+		grid-area: La;
+		background: #e8d19c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(58) {
+		grid-area: Ce;
+		background: #e8d19c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(59) {
+		grid-area: Pr;
+		background: #e8d19c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(60) {
+		grid-area: Nd;
+		background: #e8d19c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(61) {
+		grid-area: Pm;
+		background: #e8d19c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(62) {
+		grid-area: Sm;
+		background: #e8d19c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(63) {
+		grid-area: Eu;
+		background: #e8d19c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(64) {
+		grid-area: Gd;
+		background: #e8d19c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(65) {
+		grid-area: Tb;
+		background: #e8d19c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(66) {
+		grid-area: Dy;
+		background: #e8d19c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(67) {
+		grid-area: Ho;
+		background: #e8d19c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(68) {
+		grid-area: Er;
+		background: #e8d19c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(69) {
+		grid-area: Tm;
+		background: #e8d19c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(70) {
+		grid-area: Yb;
+		background: #e8d19c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(71) {
+		grid-area: Lu;
+		background: #e8d19c;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(72) {
+		grid-area: Hf;
+		background: #fac5b7;
+	}
+
+	div.container:nth-child(3) > ul > li:nth-child(73) {
+		grid-area: Ta;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(74) {
+		grid-area: W;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(75) {
+		grid-area: Re;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(76) {
+		grid-area: Os;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(77) {
+		grid-area: Ir;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(78) {
+		grid-area: Pt;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(79) {
+		grid-area: Au;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(80) {
+		grid-area: Hg;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(81) {
+		grid-area: TI;
+		background:#acdfec;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(82) {
+		grid-area: Pb;
+		background:#acdfec;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(83) {
+		grid-area: Bi;
+		background:#acdfec;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(84) {
+		grid-area: Po;
+		background:#acdfec;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(85) {
+		grid-area: At;
+		background:#9ee5d4;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(86) {
+		grid-area: Rn;
+		background:#e5bde5;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(87) {
+		grid-area: Fr;
+		background:#eace5d;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(88) {
+		grid-area: Ra;
+		background:#f1f165;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(89) {
+		grid-area: Ac;
+		background: #f5ccda;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(90) {
+		grid-area: Th;
+		background: #f5ccda;
+	}
+
+	div.container:nth-child(3) > ul > li:nth-child(91) {
+		grid-area: Pa;
+		background: #f5ccda;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(92) {
+		grid-area: U;
+		background: #f5ccda;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(93) {
+		grid-area: Np;
+		background: #f5ccda;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(94) {
+		grid-area: Pu;
+		background: #f5ccda;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(95) {
+		grid-area: Am;
+		background: #f5ccda;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(96) {
+		grid-area: Cm;
+		background: #f5ccda;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(97) {
+		grid-area: Bk;
+		background: #f5ccda;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(98) {
+		grid-area: Cf;
+		background: #f5ccda;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(99) {
+		grid-area: Es;
+		background: #f5ccda;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(100) {
+		grid-area: Fm;
+		background: #f5ccda;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(101) {
+		grid-area: Md;
+		background: #f5ccda;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(102) {
+		grid-area: No;
+		background: #f5ccda;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(103) {
+		grid-area: Lr;
+		background: #f5ccda;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(104) {
+		grid-area: Rf;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(105) {
+		grid-area: Db;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(106) {
+		grid-area: Sg;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(107) {
+		grid-area: Bh;
+		background: #fac5b7;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(108) {
+		grid-area: Hs;
+		background: #fac5b7;
+	}
+
+	div.container:nth-child(3) > ul > li:nth-child(109) {
+		grid-area: Mt;
+		background: white;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(110) {
+		grid-area: Ds;
+		background: white;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(111) {
+		grid-area: Rg;
+		background: white;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(112) {
+		grid-area: Cn;
+		background: white;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(113) {
+		grid-area: Nh;
+		background: white;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(114) {
+		grid-area: FI;
+		background: white;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(115) {
+		grid-area: Mc;
+		background: white;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(116) {
+		grid-area: Lv;
+		background: white;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(117) {
+		grid-area: Ts;
+		background: white;
+	}
+	div.container:nth-child(3) > ul > li:nth-child(118) {
+		grid-area: Og;
+		background: white;
+	}
+	
+</style>
+
 <div class="container">
-  <div class="row">
     <ul>
-    <% @elements["order"].each do |element| %>
-      <li>
-        <%= @elements[element]["name"] %>
-        <%= @elements[element]["number"] %>-
-        <%= @elements[element]["period"] %>,
-        <%= @elements[element]["atomic_mass"] %>
-      </li>
-    <% end %>
-    </ul>
-  </div>
+	<% @elements["order"].each_with_index do |element, index| %>
+			
+		<li>  
+			<%= link_to table_path(element) do%>
+				<p>	
+					<%= @elements[element]["number"] %>
+				</p>
+				<p>
+					<%= @elements[element]["symbol"] %>
+				</p>
+				<p>
+					<%= @elements[element]["name"] %>
+				</p>
+				<p>
+					<%= @elements[element]["atomic_mass"] %>
+				</p>
+			<% end%>
+		</li>
+		
+	<% end %>
+    
+    </ul> 
 </div>
 
 
